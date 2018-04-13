@@ -13,6 +13,61 @@ import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Butto
 import { Typeahead } from 'react-bootstrap-typeahead';
 
 class About extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            show: false,
+            selectedStudent: {},
+            students: [
+                {
+                    "LName": "Bradford",
+                    "FName": "Darresha",
+                    "ID": 1017,
+                    "EntityID": "2018-04-12T21:04:38.927",
+                    "StudentID": 1017,
+                    "CurrentGrade": "10th",
+                    "COCFacilitator": 1022,
+                    "CreatedDate": "2018-04-12T21:34:12.543",
+                    "StreetAddress": "123 Tennessee Ave",
+                    "PhoneNumber": "615-369-0001",
+                    "DOB": "2002-04-12",
+                    "PrimaryParentID": 1020,
+                    "SecondaryParentID": 1021,
+                    "PrimaryParentName": "John Doe",
+                    "SecondaryParentName": "Jane Doe",
+                    "SecondaryParentID": 1021,
+                    "PrimaryParentPhone": "615-123-7890",
+                    "SecondaryParentPhone": "615-456-2345",
+                    "PrimaryParentEmail": "fakeemail@hotmail.com",
+                    "SecondaryParentEmail": "anotherfakeemail@gmail.com",
+                    "StudentEmail": "studentemail@yahoo.com"
+                },
+                {
+                    "LName": "Robertson",
+                    "FName": "Ar'Kee",
+                    "ID": 1019,
+                    "EntityID": "2018-04-12T00:00:00",
+                    "StudentID": 1019,
+                    "CurrentGrade": "6th",
+                    "COCFacilitator": 1022,
+                    "CreatedDate": "2018-04-12T21:41:01.263",
+                    "StreetAddress": "123 Tennessee Ave",
+                    "PhoneNumber": "615-369-0001",
+                    "PrimaryParentName": "John Doe",
+                    "SecondaryParentName": "Jane Doe",
+                    "DOB": "2002-04-12",
+                    "PrimaryParentID": 1020,
+                    "SecondaryParentID": 1021,
+                    "PrimaryParentPhone": "615-123-7890",
+                    "SecondaryParentPhone": "615-456-2345",
+                    "PrimaryParentEmail": "fakeemail@hotmail.com",
+                    "SecondaryParentEmail": "anotherfakeemail@gmail.com",
+                    "StudentEmail": "studentemail@yahoo.com"
+                }
+            ]
+        };
+    }
 
   componentDidMount() {
     document.title = 'FInd a Student';
@@ -26,18 +81,20 @@ class About extends React.Component {
             </PageHeader>
             <Typeahead
                 onChange={(selected) => {
-                    // Handle selections...
+                    console.log(selected)
+                    this.setState({ selectedStudent: selected[0] })
                 }}
-                options={[ /* Array of objects or strings */]}
+                labelKey={option => `${option.FName} ${option.LName}`}
+                options={this.state.students}
                 placeholder="Find Student"
                 style={{ marginTop: '10px' }}
             />
             <Panel style={{ marginTop: '10px' }}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
-                    <Panel.Title componentClass="h3">Details</Panel.Title>
+                   
                 </Panel.Heading>
                 <Panel.Body> <Col xs={6} md={4} style={{ marginTop: '10px' }}>
-                    <h2>John Student</h2>
+                    <h2>{this.state.selectedStudent && this.state.selectedStudent.FName ? `${this.state.selectedStudent.FName} ${this.state.selectedStudent.LName}` : ''}</h2>
                     <Image src="C:\Users\PTMdeveloper\Desktop\CirlcesOfConnection\client\views\bio\bf5_0.png" rounded />
                 </Col>
                     <Col xs={12} md={8}>
@@ -58,7 +115,7 @@ class About extends React.Component {
                                     DOB
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="DOB" />
+                                    <FormControl placeholder="DOB" value={this.state.selectedStudent && this.state.selectedStudent.DOB ? this.state.selectedStudent.DOB : ''}/>
                                 </Col>
                             </FormGroup>
 
@@ -67,7 +124,7 @@ class About extends React.Component {
                                     Current Grade
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Current Grade" />
+                                    <FormControl placeholder="Current Grade" value={this.state.selectedStudent && this.state.selectedStudent.CurrentGrade ? this.state.selectedStudent.CurrentGrade : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="address">
@@ -75,7 +132,7 @@ class About extends React.Component {
                                     Address
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Address" />
+                                    <FormControl placeholder="Address" value={this.state.selectedStudent && this.state.selectedStudent.StreetAddress ? this.state.selectedStudent.StreetAddress : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="p1name">
@@ -83,7 +140,7 @@ class About extends React.Component {
                                     Parent 1 Name
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Parent 1 Name" />
+                                    <FormControl placeholder="Parent 1 Name" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentName ? this.state.selectedStudent.PrimaryParentName : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="p2name">
@@ -91,7 +148,7 @@ class About extends React.Component {
                                     Parent 2 Name
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Parent 2 Name" />
+                                    <FormControl placeholder="Parent 2 Name" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentName ? this.state.selectedStudent.SecondaryParentName : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="p1phone">
@@ -99,7 +156,7 @@ class About extends React.Component {
                                     Parent 1 Phone
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Parent 1 Phone" />
+                                    <FormControl placeholder="Parent 1 Phone" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentPhone ? this.state.selectedStudent.PrimaryParentPhone : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="p1email">
@@ -107,7 +164,7 @@ class About extends React.Component {
                                     Parent 1 Email
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Parent 1 Email" />
+                                    <FormControl placeholder="Parent 1 Email" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentEmail ? this.state.selectedStudent.PrimaryParentEmail : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="p2phone">
@@ -115,7 +172,7 @@ class About extends React.Component {
                                     Parent 2 Phone
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Parent 2 Phone" />
+                                    <FormControl placeholder="Parent 2 Phone" value={this.state.selectedStudent && this.state.selectedStudent.SecondaryParentPhone ? this.state.selectedStudent.SecondaryParentPhone : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="p2email">
@@ -123,7 +180,7 @@ class About extends React.Component {
                                     Parent 2 Email
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Parent 2 Email" />
+                                    <FormControl placeholder="Parent 2 Email" value={this.state.selectedStudent && this.state.selectedStudent.SecondaryParentEmail ? this.state.selectedStudent.SecondaryParentEmail : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="studentphone">
@@ -131,7 +188,7 @@ class About extends React.Component {
                                     Student Phone
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Student Phone" />
+                                    <FormControl placeholder="Student Phone" value={this.state.selectedStudent && this.state.selectedStudent.PhoneNumber ? this.state.selectedStudent.PhoneNumber : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="studentemail">
@@ -139,7 +196,7 @@ class About extends React.Component {
                                     Student Email
     </Col>
                                 <Col sm={10}>
-                                    <FormControl placeholder="Student Email" />
+                                    <FormControl placeholder="Student Email" value={ this.state.selectedStudent && this.state.selectedStudent.StudentEmail ? this.state.selectedStudent.StudentEmail : ''}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup>

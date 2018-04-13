@@ -31,7 +31,143 @@ class About extends React.Component {
 
         this.state = {
             show: false,
-            modalHeder:''
+            modalHeder: '',
+            selectedStudent:{},
+            students: [
+                {
+                    "LName": "Bradford",
+                    "FName": "Darresha",
+                    "ID": 1017,
+                    "EntityID": "2018-04-12T21:04:38.927",
+                    "StudentID": 1017,
+                    "CurrentGrade": "10th",
+                    "COCFacilitator": 1022,
+                    "CreatedDate": "2018-04-12T21:34:12.543",
+                    "StreetAddress": "123 Tennessee Ave",
+                    "PhoneNumber": "615-369-0001",
+                    "DOB": "2002-04-12",
+                    "PrimaryParentID": 1020,
+                    "SecondaryParentID": 1021,
+                    "PrimaryParentName": "John Doe",
+                    "SecondaryParentName": "Jane Doe",
+                    "SecondaryParentID": 1021,
+                    "PrimaryParentPhone": "615-123-7890",
+                    "SecondaryParentPhone": "615-456-2345",
+                    "PrimaryParentEmail": "fakeemail@hotmail.com",
+                    "SecondaryParentEmail": "anotherfakeemail@gmail.com",
+                    "StudentEmail": "studentemail@yahoo.com",
+                    "charts": {
+                        "caringAdults": [
+                            { title: "Data 1", value: 5, color: "#337ab7" },
+                            { title: "Data 2", value: 10, color: "#3c763d" },
+                            { title: "Data 3", value: 15, color: "#bce8f1" },
+                            { title: "Data 4", value: 20, color: "#faebcc" },
+                            { title: "Data 5", value: 25, color: "ebccd1" },
+                        ],
+                        "workCompentencies": [
+                            { title: "Data 1", value: 10, color: "#337ab7" },
+                            { title: "Data 2", value: 20, color: "#3c763d" },
+                            { title: "Data 3", value: 30, color: "#bce8f1" },
+                            { title: "Data 4", value: 40, color: "#faebcc" },
+                            { title: "Data 5", value: 50, color: "ebccd1" },
+                        ],
+                        "peerGroups": [
+                            { title: "Data 1", value: 7, color: "#337ab7" },
+                            { title: "Data 2", value: 14, color: "#3c763d" },
+                            { title: "Data 3", value: 21, color: "#bce8f1" },
+                            { title: "Data 4", value: 28, color: "#faebcc" },
+                            { title: "Data 5", value: 35, color: "ebccd1" },
+                        ],
+                        "enrichingExperiences": [
+                            { title: "Data 1", value: 30, color: "#337ab7" },
+                            { title: "Data 2", value: 60, color: "#3c763d" },
+                            { title: "Data 3", value: 90, color: "#bce8f1" },
+                            { title: "Data 4", value: 120, color: "#faebcc" },
+                            { title: "Data 5", value: 150, color: "ebccd1" },
+                        ],
+                        "self": [
+                            { title: "Data 1", value: 8, color: "#337ab7" },
+                            { title: "Data 2", value: 16, color: "#3c763d" },
+                            { title: "Data 3", value: 24, color: "#bce8f1" },
+                            { title: "Data 4", value: 32, color: "#faebcc" },
+                            { title: "Data 5", value: 40, color: "ebccd1" },
+                        ],
+                        "purpose": [
+                            { title: "Data 1", value: 50, color: "#337ab7" },
+                            { title: "Data 2", value: 100, color: "#3c763d" },
+                            { title: "Data 3", value: 150, color: "#bce8f1" },
+                            { title: "Data 4", value: 200, color: "#faebcc" },
+                            { title: "Data 5", value: 250, color: "ebccd1" },
+                        ]
+                    }
+                },
+                {
+                    "LName": "Robertson",
+                    "FName": "Ar'Kee",
+                    "ID": 1019,
+                    "EntityID": "2018-04-12T00:00:00",
+                    "StudentID": 1019,
+                    "CurrentGrade": "6th",
+                    "COCFacilitator": 1022,
+                    "CreatedDate": "2018-04-12T21:41:01.263",
+                    "StreetAddress": "123 Tennessee Ave",
+                    "PhoneNumber": "615-369-0001",
+                    "PrimaryParentName": "John Doe",
+                    "SecondaryParentName": "Jane Doe",
+                    "DOB": "2002-04-12",
+                    "PrimaryParentID": 1020,
+                    "SecondaryParentID": 1021,
+                    "PrimaryParentPhone": "615-123-7890",
+                    "SecondaryParentPhone": "615-456-2345",
+                    "PrimaryParentEmail": "fakeemail@hotmail.com",
+                    "SecondaryParentEmail": "anotherfakeemail@gmail.com",
+                    "StudentEmail": "studentemail@yahoo.com",
+                    "charts": {
+                        "caringAdults": [
+                            { title: "Data 1", value: 5, color: "#337ab7" },
+                            { title: "Data 2", value: 10, color: "#3c763d" },
+                            { title: "Data 3", value: 15, color: "#bce8f1" },
+                            { title: "Data 4", value: 20, color: "#faebcc" },
+                            { title: "Data 5", value: 25, color: "ebccd1" },
+                        ],
+                        "workCompentencies": [
+                            { title: "Data 1", value: 10, color: "#337ab7" },
+                            { title: "Data 2", value: 20, color: "#3c763d" },
+                            { title: "Data 3", value: 30, color: "#bce8f1" },
+                            { title: "Data 4", value: 40, color: "#faebcc" },
+                            { title: "Data 5", value: 50, color: "ebccd1" },
+                        ],
+                        "peerGroups": [
+                            { title: "Data 1", value: 7, color: "#337ab7" },
+                            { title: "Data 2", value: 14, color: "#3c763d" },
+                            { title: "Data 3", value: 21, color: "#bce8f1" },
+                            { title: "Data 4", value: 28, color: "#faebcc" },
+                            { title: "Data 5", value: 35, color: "ebccd1" },
+                        ],
+                        "enrichingExperiences": [
+                            { title: "Data 1", value: 30, color: "#337ab7" },
+                            { title: "Data 2", value: 60, color: "#3c763d" },
+                            { title: "Data 3", value: 90, color: "#bce8f1" },
+                            { title: "Data 4", value: 120, color: "#faebcc" },
+                            { title: "Data 5", value: 150, color: "ebccd1" },
+                        ],
+                        "self": [
+                            { title: "Data 1", value: 8, color: "#337ab7" },
+                            { title: "Data 2", value: 16, color: "#3c763d" },
+                            { title: "Data 3", value: 24, color: "#bce8f1" },
+                            { title: "Data 4", value: 32, color: "#faebcc" },
+                            { title: "Data 5", value: 40, color: "ebccd1" },
+                        ],
+                        "purpose": [
+                            { title: "Data 1", value: 50, color: "#337ab7" },
+                            { title: "Data 2", value: 100, color: "#3c763d" },
+                            { title: "Data 3", value: 150, color: "#bce8f1" },
+                            { title: "Data 4", value: 200, color: "#faebcc" },
+                            { title: "Data 5", value: 250, color: "ebccd1" },
+                        ]
+                    }
+                }
+            ]
         };
     }
 
@@ -65,7 +201,6 @@ class About extends React.Component {
             />
             <Panel style={{marginTop: '10px'}}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
-                    <Panel.Title componentClass="h3">Maps</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
                     <Modal show={this.state.show} onHide={this.handleClose}>
@@ -77,9 +212,8 @@ class About extends React.Component {
                                 <Col xs={6} md={4}>
                                 </Col>
                                 <Col xs={6} md={4}>
-                                    <Panel bsStyle="primary" bsSize="large" >
+                              <Panel bsStyle="primary" bsSize="large" >
                                 <Panel.Heading>
-                                    <Panel.Title componentClass="h3">Caring Adults</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
                                     <PieChart
@@ -130,19 +264,19 @@ class About extends React.Component {
                                 <Panel.Title componentClass="h3">Caring Adults</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                <PieChart
-                                    data={data}
-                                    // If you need expand on hover (or touch) effect
-                                    expandOnHover
-                                    onSectorHover={(d, i, e) => {
-                                        if (d) {
-                                            console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
-                                        } else {
-                                            console.log("Mouse leave - Index:", i, "Event:", e)
+                                {this.state.selectedStudent && this.state.selectedStudent.charts.caringAdults ? < PieChart
+                                        data={this.state.selectedStudent.charts.caringAdults}
+                                        // If you need expand on hover (or touch) effect
+                                        expandOnHover
+                                        onSectorHover={(d, i, e) => {
+                                            if (d) {
+                                                console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                            } else {
+                                                console.log("Mouse leave - Index:", i, "Event:", e)
+                                            }
                                         }
-                                    }
-                                    }
-                                />
+                                        }
+                                    /> : ''}
                             </Panel.Body>
                         </Panel>
                     </Col>
@@ -152,8 +286,8 @@ class About extends React.Component {
                                 <Panel.Title componentClass="h3">Work Ready Compentence</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                <PieChart
-                                    data={data}
+                                {this.state.selectedStudent && this.state.selectedStudent.charts.workCompentencies ? < PieChart
+                                    data={this.state.selectedStudent.charts.workCompentencies}
                                     // If you need expand on hover (or touch) effect
                                     expandOnHover
                                     onSectorHover={(d, i, e) => {
@@ -164,7 +298,7 @@ class About extends React.Component {
                                         }
                                     }
                                     }
-                                />
+                                /> : ''}
                             </Panel.Body>
                         </Panel>
                     </Col>
@@ -174,8 +308,8 @@ class About extends React.Component {
                                 <Panel.Title componentClass="h3">Positive Peer Groups</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                <PieChart
-                                    data={data}
+                                {this.state.selectedStudent && this.state.selectedStudent.charts.peerGroups ? < PieChart
+                                        data={this.state.selectedStudent.charts.peerGroups}
                                     // If you need expand on hover (or touch) effect
                                     expandOnHover
                                     onSectorHover={(d, i, e) => {
@@ -186,7 +320,7 @@ class About extends React.Component {
                                         }
                                     }
                                     }
-                                />
+                                /> : ''}
                             </Panel.Body>
                         </Panel>
                     </Col>
@@ -198,8 +332,8 @@ class About extends React.Component {
                                     <Panel.Title componentClass="h3">Enriching Experiences</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
-                                    <PieChart
-                                        data={data}
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts.enrichingExperiences ? < PieChart
+                                        data={this.state.selectedStudent.charts.enrichingExperiences}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
@@ -210,7 +344,7 @@ class About extends React.Component {
                                             }
                                         }
                                         }
-                                    />
+                                    /> : ''}
                                 </Panel.Body>
                             </Panel>
                         </Col>
@@ -220,8 +354,8 @@ class About extends React.Component {
                                     <Panel.Title componentClass="h3">Self</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
-                                    <PieChart
-                                        data={data}
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts.self ? < PieChart
+                                        data={this.state.selectedStudent.charts.self}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
@@ -232,18 +366,18 @@ class About extends React.Component {
                                             }
                                         }
                                         }
-                                    />
+                                    /> : ''}
                                 </Panel.Body>
                             </Panel>
                         </Col>
                         <Col xs={6} md={4}>
-                            <Panel bsStyle="primary" onClick={() => this.handleShow('Self')}>
+                            <Panel bsStyle="primary" onClick={() => this.handleShow('Purpose')}>
                                 <Panel.Heading>
                                     <Panel.Title componentClass="h3">Purpose</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
-                                    <PieChart
-                                        data={data}
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts.purpose ? < PieChart
+                                        data={this.state.selectedStudent.charts.purpose}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
@@ -254,7 +388,7 @@ class About extends React.Component {
                                             }
                                         }
                                         }
-                                    />
+                                    /> : ''}
                                 </Panel.Body>
                             </Panel>
                         </Col>

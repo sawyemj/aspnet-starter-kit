@@ -12,7 +12,162 @@ import Layout from '../../components/Layout';
 import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Button, PageHeader, Panel } from 'react-bootstrap'
 import { Typeahead } from 'react-bootstrap-typeahead';
 
+const academics = {
+    "AcademicID": 1001,
+    "GPA": '3.4',
+    "DisciplinaryAction": "false",
+    "UnexcusedAbsences": 2,
+    "FailedClasses": 3,
+    "TotalClasses": 6,
+    "TotalClassesComment": null,
+    "FailedClassesComment": null,
+    "DisplinaryActionComment": "No issues this year",
+    "UnexecusedAbsencesComment": "Overslept",
+    "QuarterID": 1,
+    "StudentID": 1017,
+    "YearID": 8,
+    "StudentPhoto": null,
+    "SchoolID": null
+};
+
+const demographics = {
+    "SchoolName": "Buena Vista Elementary",
+    "Counselor": 'Mrs Jones',
+    "ExpectedGraduationDate": "05/2021",
+    "cluster": 'technology'
+};
+
 class About extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            show: false,
+            academics: {},
+            demographics: {},
+            students: [
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "SaLT",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "Dinner & Devo",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "Calvin House Youth",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "After School Programming",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "PTM Life",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "Breakfast and Bible Study",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "Lunchmate Mentoring",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 0,
+                    "FName": "",
+                    "LName": "",
+                    "EntityName": "Other",
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 1,
+                    "FName": "Darresha",
+                    "LName": "Bradford",
+                    "EntityName": null,
+                    "CreatedDate": "2018-04-12T21:04:38.927"
+                },
+                {
+                    "id": 2,
+                    "FName": "Ar'Kee",
+                    "LName": "Robertson",
+                    "EntityName": null,
+                    "CreatedDate": "2018-04-12T00:00:00"
+                },
+                {
+                    "id": 3,
+                    "FName": "mrs",
+                    "LName": "Bradford",
+                    "EntityName": null,
+                    "CreatedDate": "2018-04-12T21:22:41.523"
+                },
+                {
+                    "id": 4,
+                    "FName": "mr",
+                    "LName": "Bradford",
+                    "EntityName": null,
+                    "CreatedDate": "2018-04-12T21:25:17.447"
+                },
+                {
+                    "id": 5,
+                    "FName": "Rachel",
+                    "LName": "Barden",
+                    "EntityName": null,
+                    "CreatedDate": "2018-04-12T21:27:52.463"
+                },
+                {
+                    "id": 6,
+                    "FName": "Captain",
+                    "LName": "Awesome",
+                    "EntityName": "Test",
+                    "CreatedDate": null
+                },
+                {
+                    "id": 7,
+                    "FName": "Captain",
+                    "LName": "Awesome",
+                    "EntityName": "Test",
+                    "CreatedDate": null
+                },
+                {
+                    "id": 8,
+                    "FName": "Captain",
+                    "LName": "Awesome",
+                    "EntityName": "Test",
+                    "CreatedDate": null
+                },
+                {
+                    "id": 9,
+                    "FName": "Captain",
+                    "LName": "Awesome",
+                    "EntityName": "Test",
+                    "CreatedDate": null
+                }
+            ]
+        };
+    }
 
   componentDidMount() {
     document.title = 'FInd a Student';
@@ -26,15 +181,15 @@ class About extends React.Component {
             </PageHeader>
             <Typeahead
                 onChange={(selected) => {
-                    // Handle selections...
+                    this.setState({ academics, demographics})
                 }}
-                options={[ /* Array of objects or strings */]}
+                labelKey={option => `${option.FName} ${option.LName}`}
+                options={this.state.students}
                 placeholder="Find Student"
                 style={{marginTop:'10px'}}
             />
             <Panel style={{marginTop: '10px'}}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
-                    <Panel.Title componentClass="h3">Academic Details</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body><Form horizontal style={{ marginTop: '10px' }}>
                     <FormGroup controlId="schoolName">
@@ -42,7 +197,7 @@ class About extends React.Component {
                             School Name
     </Col>
                         <Col sm={10}>
-                            <FormControl placeholder="School Name" />
+                            <FormControl placeholder="School Name" value={this.state.demographics.SchoolName || ''}/>
                         </Col>
                     </FormGroup>
 
@@ -51,7 +206,7 @@ class About extends React.Component {
                             Counselor
     </Col>
                         <Col sm={10}>
-                            <FormControl placeholder="Counselor" />
+                            <FormControl placeholder="Counselor" value={this.state.demographics.Counselor || ''}/>
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="graduationDate">
@@ -59,7 +214,7 @@ class About extends React.Component {
                             Expected Graduation Date
     </Col>
                         <Col sm={10}>
-                            <FormControl placeholder="Graduation Date" />
+                            <FormControl placeholder="Graduation Date" value={this.state.demographics.ExpectedGraduationDate || ''}/>
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="cluster">
@@ -67,7 +222,7 @@ class About extends React.Component {
                              Academy / Career Cluster
     </Col>
                         <Col sm={10}>
-                            <FormControl placeholder="Cluster" />
+                            <FormControl placeholder="Cluster" value={this.state.demographics.ExpectedGraduationDate || ''}/>
                         </Col>
                     </FormGroup>
                     <FormGroup>
@@ -90,39 +245,40 @@ class About extends React.Component {
                         <tbody>
                             <tr>
                                 <td>GPA</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>{this.state.academics.GPA || ''}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
                             </tr>
                             <tr>
                                 <td>Disp</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>{this.state.academics.DisciplinaryAction || ''}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Abscence</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>{this.state.academics.UnexcusedAbsences || ''}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Fails</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
-                                <td>Table cell</td>
+                                <td>{this.state.academics.FailedClasses || '' }</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </Table>
