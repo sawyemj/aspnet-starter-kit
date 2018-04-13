@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "path": "/",
     "view": "./views/home",
@@ -15,6 +15,22 @@
   {
     "path": "/about",
     "view": "./views/about"
+  },
+  {
+    "path": "/find",
+    "view": "./views/student-search"
+  },
+  {
+    "path": "/bio",
+    "view": "./views/bio"
+  },
+  {
+    "path": "/academics",
+    "view": "./views/academics"
+  },
+  {
+    "path": "/coc-maps",
+    "view": "./views/coc-maps"
   },
   {
     "path": "/tasks/:status(pending|completed)?",

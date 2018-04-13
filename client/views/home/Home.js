@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ASP.NET Core Starter Kit (https://dotnetreact.com)
  *
  * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
@@ -9,6 +9,8 @@
 
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
+import { Jumbotron, Button } from 'react-bootstrap'
+
 
 const title = 'ASP.NET Core Starter Kit';
 const link = 'https://github.com/kriasoft/aspnet-starter-kit';
@@ -26,16 +28,16 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
-        <h1 className="mdl-typography--title">Welcome to {title}!</h1>
-        <p className="mdl-typography--body-1">
-          For more information visit <a href={link}>{link}</a>
-        </p>
-        <h4 className="mdl-typography--title">Articles</h4>
-        <ul>
-          {this.props.articles.map((article, i) =>
-            <li key={i}><a href={article.url}>{article.title}</a> by {article.author}</li>
-          )}
-        </ul>
+            <Jumbotron style={{marginTop: '10px', padding:'10px'}}>
+                <h1>Welcome To Circles of Connection!</h1>
+                <p>
+                    A fun tool that tracks a student's academic progress
+  </p>
+                <p>
+                    <Button bsStyle="primary">Get Started</Button>
+                </p>
+            </Jumbotron>
+        
       </Layout>
     );
   }

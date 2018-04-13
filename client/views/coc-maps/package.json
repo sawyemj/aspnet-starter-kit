@@ -1,0 +1,6 @@
+{
+  "name": "coc-maps",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./coc-maps.js"
+}

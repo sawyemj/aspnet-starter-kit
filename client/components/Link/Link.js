@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ASP.NET Core Starter Kit (https://dotnetreact.com)
  *
  * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
@@ -48,7 +48,7 @@ class Link extends React.Component {
 
   render() {
     const { to, ...props } = this.props; // eslint-disable-line no-use-before-define
-    return <a href={history.createHref({ pathname: to })} {...props} onClick={this.handleClick} />;
+    return <a href={history.createHref({ pathname: to })} {...props} onClick={this.handleClick} style={{ color: '#7a1222' }} />;
   }
 
 }

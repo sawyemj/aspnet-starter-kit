@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ASP.NET Core Starter Kit (https://dotnetreact.com)
  *
  * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
@@ -24,8 +24,10 @@ class Navigation extends React.Component {
     return (
       <nav className="mdl-navigation" ref={node => { this.root = node; }}>
         <Link className="mdl-navigation__link" to="/">Home</Link>
-        <Link className="mdl-navigation__link" to="/about">About</Link>
-        <Link className="mdl-navigation__link" to="/not-found">Not Found</Link>
+        <Link className="mdl-navigation__link" to="/find">Find a Student</Link>
+        <Link className="mdl-navigation__link" to="/academics">Academics</Link>
+        <Link className="mdl-navigation__link" to="/coc-maps">COC Maps</Link>
+        <Link className="mdl-navigation__link" to="/bio">Bio</Link>
       </nav>
     );
   }
