@@ -32,7 +32,7 @@ class Header extends React.Component {
         <div className={`mdl-layout__header-row ${s.headerRow}`}>
           <Link className="mdl-layout-title" to="/">
                     <Logo height={48} />
-                    <h1 className={`mdl-typography--title ${s.tagline}`} style={{ color:'#7a1222'}}>PT Ministries</h1>
+                    <h1 className={`mdl-typography--title ${s.tagline}`} style={{ color:'#7a1222'}}>Preston Taylor Ministries</h1>
           </Link>
           <div className="mdl-layout-spacer" />
           <Navigation />

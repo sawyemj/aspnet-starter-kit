@@ -9,7 +9,7 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Button, Image, DropdownButton, MenuItem, PageHeader, Panel } from 'react-bootstrap'
+import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Button, Image, DropdownButton, MenuItem, PageHeader, Panel, Row } from 'react-bootstrap'
 import { Typeahead } from 'react-bootstrap-typeahead';
 
 class About extends React.Component {
@@ -21,8 +21,8 @@ class About extends React.Component {
             selectedStudent: {},
             students: [
                 {
-                    "LName": "Bradford",
-                    "FName": "Darresha",
+                    "LName": "Johnson",
+                    "FName": "Jess",
                     "ID": 1017,
                     "EntityID": "2018-04-12T21:04:38.927",
                     "StudentID": 1017,
@@ -44,8 +44,8 @@ class About extends React.Component {
                     "StudentEmail": "studentemail@yahoo.com"
                 },
                 {
-                    "LName": "Robertson",
-                    "FName": "Ar'Kee",
+                    "LName": "Williams",
+                    "FName": "Will",
                     "ID": 1019,
                     "EntityID": "2018-04-12T00:00:00",
                     "StudentID": 1019,
@@ -79,37 +79,41 @@ class About extends React.Component {
             <PageHeader style={{ color: '#7a1222' }}>
                 Student Bio
             </PageHeader>
-            <Typeahead
-                onChange={(selected) => {
-                    console.log(selected)
-                    this.setState({ selectedStudent: selected[0] })
-                }}
-                labelKey={option => `${option.FName} ${option.LName}`}
-                options={this.state.students}
-                placeholder="Find Student"
-                style={{ marginTop: '10px' }}
-            />
+            <Row>
+
+            <Col md={6} mdPush={6}>
+                <Typeahead
+                    onChange={(selected) => {
+                        console.log(selected)
+                        this.setState({ selectedStudent: selected[0] })
+                    }}
+                    labelKey={option => `${option.FName} ${option.LName}`}
+                    options={this.state.students}
+                    placeholder="Find Student"
+                    style={{ marginTop: '10px' }}
+                />
+            </Col>
+            <Col md={6} mdPull={6}>
+                <DropdownButton
+                    bsStyle="default"
+                    title="School Year"
+                    key="1"
+                    id={`dropdown-basic-1`}
+
+                >
+                    <MenuItem eventKey="1">2017-18</MenuItem>
+                </DropdownButton>
+                </Col>
+            </Row >
+            <Row>
+
+            
             <Panel style={{ marginTop: '10px' }}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
                    
                 </Panel.Heading>
-                <Panel.Body> <Col xs={6} md={4} style={{ marginTop: '10px' }}>
-                    <h2>{this.state.selectedStudent && this.state.selectedStudent.FName ? `${this.state.selectedStudent.FName} ${this.state.selectedStudent.LName}` : ''}</h2>
-                    <Image src="C:\Users\PTMdeveloper\Desktop\CirlcesOfConnection\client\views\bio\bf5_0.png" rounded />
-                </Col>
-                    <Col xs={12} md={8}>
+                <Panel.Body> 
                         <Form horizontal style={{ marginTop: '30px' }}>
-                            <FormGroup controlId="dob" >
-                                <DropdownButton
-                                    bsStyle="default"
-                                    title="School Year"
-                                    key="1"
-                                    id={`dropdown-basic-1`}
-                                    
-                                >
-                                    <MenuItem eventKey="1">2017-18</MenuItem>
-                                </DropdownButton>
-                            </FormGroup>
                             <FormGroup controlId="dob">
                                 <Col componentClass={ControlLabel} sm={2}>
                                     DOB
@@ -205,8 +209,9 @@ class About extends React.Component {
                                 </Col>
                             </FormGroup>
                         </Form>
-                    </Col></Panel.Body>
-            </Panel>
+                    </Panel.Body>
+                </Panel>
+            </Row>
       </Layout>
     );
   }

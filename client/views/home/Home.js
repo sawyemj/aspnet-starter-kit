@@ -28,13 +28,12 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
-            <Jumbotron style={{marginTop: '10px', padding:'10px'}}>
+            <Jumbotron style={{marginTop: '10px', padding:'10px', textAlign: 'center'}}>
                 <h1>Welcome To Circles of Connection!</h1>
                 <p>
-                    A fun tool that tracks a student's academic progress
+                    A helpful tool that tracks a student's academic progress
   </p>
                 <p>
-                    <Button bsStyle="primary">Get Started</Button>
                 </p>
             </Jumbotron>
         

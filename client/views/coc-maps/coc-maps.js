@@ -32,11 +32,13 @@ class About extends React.Component {
         this.state = {
             show: false,
             modalHeder: '',
+            selectedChart: 'caringAdults',
             selectedStudent:{},
+            selectValue: 'select',
             students: [
                 {
-                    "LName": "Bradford",
-                    "FName": "Darresha",
+                    "LName": "Willimans",
+                    "FName": "Jess",
                     "ID": 1017,
                     "EntityID": "2018-04-12T21:04:38.927",
                     "StudentID": 1017,
@@ -58,112 +60,124 @@ class About extends React.Component {
                     "StudentEmail": "studentemail@yahoo.com",
                     "charts": {
                         "caringAdults": [
-                            { title: "Data 1", value: 5, color: "#337ab7" },
-                            { title: "Data 2", value: 10, color: "#3c763d" },
-                            { title: "Data 3", value: 15, color: "#bce8f1" },
-                            { title: "Data 4", value: 20, color: "#faebcc" },
-                            { title: "Data 5", value: 25, color: "ebccd1" },
+                            { title: "At Home", value: 5, color: "blue" },
+                            { title: "At School", value: 25, color: "green" },
+                            { title: "At Church", value: 25, color: "green" },
+                            { title: "At Work", value: 15, color: "purple" },
+                            { title: "Resource Teams", value: 20, color: "orange" },
+                            { title: "At PTM", value: 25, color: "green" },
                         ],
                         "workCompentencies": [
-                            { title: "Data 1", value: 10, color: "#337ab7" },
-                            { title: "Data 2", value: 20, color: "#3c763d" },
-                            { title: "Data 3", value: 30, color: "#bce8f1" },
-                            { title: "Data 4", value: 40, color: "#faebcc" },
-                            { title: "Data 5", value: 50, color: "ebccd1" },
+                            { title: "Communication Skills", value: 20, color: "orange" },
+                            { title: "Study Skills", value: 20, color: "orange" },
+                            { title: "Problem Solving Skils", value: 15, color: "purple" },
+                            { title: "Financial Literacy", value: 25, color: "green" },
+                            { title: "Leadership", value: 20, color: "orange" },
+                            { title: "Work Experience", value: 15, color: "purple" },
+                            { title: "Resource Teams", value: 5, color: "blue" },
+                            { title: "STEM Exposure", value: 5, color: "blue" },
                         ],
                         "peerGroups": [
-                            { title: "Data 1", value: 7, color: "#337ab7" },
-                            { title: "Data 2", value: 14, color: "#3c763d" },
-                            { title: "Data 3", value: 21, color: "#bce8f1" },
-                            { title: "Data 4", value: 28, color: "#faebcc" },
-                            { title: "Data 5", value: 35, color: "ebccd1" },
+                            { title: "PTM Involvement", value: 20, color: "orange" },
+                            { title: "Outside Youth Groups", value: 20, color: "orange" },
+                            { title: "At School", value: 20, color: "orange" },
+                            { title: "At Work", value: 15, color: "purple" },
+                            { title: "At Home", value: 5, color: "blue" },
+                            { title: "Resource Teams", value: 15, color: "purple" }
                         ],
                         "enrichingExperiences": [
-                            { title: "Data 1", value: 30, color: "#337ab7" },
-                            { title: "Data 2", value: 60, color: "#3c763d" },
-                            { title: "Data 3", value: 90, color: "#bce8f1" },
-                            { title: "Data 4", value: 120, color: "#faebcc" },
-                            { title: "Data 5", value: 150, color: "ebccd1" },
+                            { title: "Camps", value: 20, color: "orange" },
+                            { title: "Cultural Exposure", value: 25, color: "green" },
+                            { title: "Retreats", value: 15, color: "purple" },
+                            { title: "Community Service", value: 15, color: "purple" },
+                            { title: "Extracurricular School Activites", value: 5, color: "ebccd1" },
+                            { title: "Field Trips", value: 5, color: "blue" },
+                            { title: "Resource Teams", value: 15, color: "purple" }
                         ],
                         "self": [
-                            { title: "Data 1", value: 8, color: "#337ab7" },
-                            { title: "Data 2", value: 16, color: "#3c763d" },
-                            { title: "Data 3", value: 24, color: "#bce8f1" },
-                            { title: "Data 4", value: 32, color: "#faebcc" },
-                            { title: "Data 5", value: 40, color: "ebccd1" },
+                            { title: "Spiritual Gifts", value: 20, color: "orange" },
+                            { title: "Talents", value: 20, color: "orange" },
+                            { title: "Interests / Hobbies", value: 25, color: "green" },
+                            { title: "Personality / Strengths Assesment", value: 25, color: "green" },
+                            { title: "Healthy Habbits / Wellness", value: 5, color: "blue" },
+                            { title: "Resource Teams", value: 20, color: "orange" }
                         ],
                         "purpose": [
-                            { title: "Data 1", value: 50, color: "#337ab7" },
-                            { title: "Data 2", value: 100, color: "#3c763d" },
-                            { title: "Data 3", value: 150, color: "#bce8f1" },
-                            { title: "Data 4", value: 200, color: "#faebcc" },
-                            { title: "Data 5", value: 250, color: "ebccd1" },
+                            { title: "GOD Confident", value: 25, color: "green" },
+                            { title: "Dream Pursuit (Actions Taken)", value: 15, color: "purple" },
+                            { title: "Resource Teams", value: 20, color: "orange" }
                         ]
                     }
                 },
                 {
-                    "LName": "Robertson",
-                    "FName": "Ar'Kee",
+                    "LName": "Cumberland",
+                    "FName": "Shelby",
                     "ID": 1019,
                     "EntityID": "2018-04-12T00:00:00",
                     "StudentID": 1019,
                     "CurrentGrade": "6th",
                     "COCFacilitator": 1022,
                     "CreatedDate": "2018-04-12T21:41:01.263",
-                    "StreetAddress": "123 Tennessee Ave",
+                    "StreetAddress": "456 Test Ave",
                     "PhoneNumber": "615-369-0001",
                     "PrimaryParentName": "John Doe",
                     "SecondaryParentName": "Jane Doe",
-                    "DOB": "2002-04-12",
+                    "DOB": "2007-05-12",
                     "PrimaryParentID": 1020,
                     "SecondaryParentID": 1021,
-                    "PrimaryParentPhone": "615-123-7890",
-                    "SecondaryParentPhone": "615-456-2345",
-                    "PrimaryParentEmail": "fakeemail@hotmail.com",
-                    "SecondaryParentEmail": "anotherfakeemail@gmail.com",
-                    "StudentEmail": "studentemail@yahoo.com",
+                    "PrimaryParentPhone": "615-456-7890",
+                    "SecondaryParentPhone": "615-456-1224",
+                    "PrimaryParentEmail": "tester@hotmail.com",
+                    "SecondaryParentEmail": "bigtest@gmail.com",
+                    "StudentEmail": "rob@yahoo.com",
                     "charts": {
                         "caringAdults": [
-                            { title: "Data 1", value: 5, color: "#337ab7" },
-                            { title: "Data 2", value: 10, color: "#3c763d" },
-                            { title: "Data 3", value: 15, color: "#bce8f1" },
-                            { title: "Data 4", value: 20, color: "#faebcc" },
-                            { title: "Data 5", value: 25, color: "ebccd1" },
+                            { title: "At Home", value: 5, color: "blue" },
+                            { title: "At School", value: 25, color: "green" },
+                            { title: "At Church", value: 25, color: "green" },
+                            { title: "At Work", value: 15, color: "purple" },
+                            { title: "Resource Teams", value: 20, color: "orange" },
+                            { title: "At PTM", value: 25, color: "green" },
                         ],
                         "workCompentencies": [
-                            { title: "Data 1", value: 10, color: "#337ab7" },
-                            { title: "Data 2", value: 20, color: "#3c763d" },
-                            { title: "Data 3", value: 30, color: "#bce8f1" },
-                            { title: "Data 4", value: 40, color: "#faebcc" },
-                            { title: "Data 5", value: 50, color: "ebccd1" },
+                            { title: "Communication Skills", value: 20, color: "orange" },
+                            { title: "Study Skills", value: 20, color: "orange" },
+                            { title: "Problem Solving Skils", value: 15, color: "purple" },
+                            { title: "Financial Literacy", value: 25, color: "green" },
+                            { title: "Leadership", value: 20, color: "orange" },
+                            { title: "Work Experience", value: 15, color: "purple" },
+                            { title: "Resource Teams", value: 5, color: "blue" },
+                            { title: "STEM Exposure", value: 5, color: "blue" },
                         ],
                         "peerGroups": [
-                            { title: "Data 1", value: 7, color: "#337ab7" },
-                            { title: "Data 2", value: 14, color: "#3c763d" },
-                            { title: "Data 3", value: 21, color: "#bce8f1" },
-                            { title: "Data 4", value: 28, color: "#faebcc" },
-                            { title: "Data 5", value: 35, color: "ebccd1" },
+                            { title: "PTM Involvement", value: 20, color: "orange" },
+                            { title: "Outside Youth Groups", value: 20, color: "orange" },
+                            { title: "At School", value: 20, color: "orange" },
+                            { title: "At Work", value: 15, color: "purple" },
+                            { title: "At Home", value: 5, color: "blue" },
+                            { title: "Resource Teams", value: 15, color: "purple" }
                         ],
                         "enrichingExperiences": [
-                            { title: "Data 1", value: 30, color: "#337ab7" },
-                            { title: "Data 2", value: 60, color: "#3c763d" },
-                            { title: "Data 3", value: 90, color: "#bce8f1" },
-                            { title: "Data 4", value: 120, color: "#faebcc" },
-                            { title: "Data 5", value: 150, color: "ebccd1" },
+                            { title: "Camps", value: 20, color: "orange" },
+                            { title: "Cultural Exposure", value: 25, color: "green" },
+                            { title: "Retreats", value: 15, color: "purple" },
+                            { title: "Community Service", value: 15, color: "purple" },
+                            { title: "Extracurricular School Activites", value: 5, color: "blue" },
+                            { title: "Field Trips", value: 5, color: "blue" },
+                            { title: "Resource Teams", value: 15, color: "purple" }
                         ],
                         "self": [
-                            { title: "Data 1", value: 8, color: "#337ab7" },
-                            { title: "Data 2", value: 16, color: "#3c763d" },
-                            { title: "Data 3", value: 24, color: "#bce8f1" },
-                            { title: "Data 4", value: 32, color: "#faebcc" },
-                            { title: "Data 5", value: 40, color: "ebccd1" },
+                            { title: "Spiritual Gifts", value: 20, color: "orange" },
+                            { title: "Talents", value: 20, color: "orange" },
+                            { title: "Interests / Hobbies", value: 25, color: "green" },
+                            { title: "Personality / Strengths Assesment", value: 25, color: "green" },
+                            { title: "Healthy Habbits / Wellness", value: 5, color: "blue" },
+                            { title: "Resource Teams", value: 20, color: "orange" }
                         ],
                         "purpose": [
-                            { title: "Data 1", value: 50, color: "#337ab7" },
-                            { title: "Data 2", value: 100, color: "#3c763d" },
-                            { title: "Data 3", value: 150, color: "#bce8f1" },
-                            { title: "Data 4", value: 200, color: "#faebcc" },
-                            { title: "Data 5", value: 250, color: "ebccd1" },
+                            { title: "GOD Confident", value: 25, color: "green" },
+                            { title: "Dream Pursuit (Actions Taken)", value: 15, color: "purple" },
+                            { title: "Resource Teams", value: 20, color: "orange" }
                         ]
                     }
                 }
@@ -175,9 +189,11 @@ class About extends React.Component {
         this.setState({ show: false });
     }
 
-    handleShow(modalHeder) {
+    handleShow(modalHeder, selectValue) {
         this.setState({
-            show: true, modalHeder
+            show: true,
+            modalHeder,
+            selectValue
         });
     }
 
@@ -193,14 +209,17 @@ class About extends React.Component {
             </PageHeader>
             <Typeahead
                 onChange={(selected) => {
-                    // Handle selections...
+                    console.log(selected)
+                    this.setState({ selectedStudent: selected[0] })
                 }}
-                options={[ /* Array of objects or strings */]}
+                labelKey={option => `${option.FName} ${option.LName}`}
+                options={this.state.students}
                 placeholder="Find Student"
-                style={{marginTop:'10px'}}
+                style={{ marginTop: '10px' }}
             />
             <Panel style={{marginTop: '10px'}}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
+
                 </Panel.Heading>
                 <Panel.Body>
                     <Modal show={this.state.show} onHide={this.handleClose}>
@@ -208,43 +227,15 @@ class About extends React.Component {
                             <Modal.Title>{this.state.modalHeder}</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Row className="show-grid" style={{ marginTop: '20px' }}>
-                                <Col xs={6} md={4}>
-                                </Col>
-                                <Col xs={6} md={4}>
-                              <Panel bsStyle="primary" bsSize="large" >
-                                <Panel.Heading>
-                                </Panel.Heading>
-                                <Panel.Body>
-                                    <PieChart
-                                        data={data}
-                                        // If you need expand on hover (or touch) effect
-                                        expandOnHover
-                                        onSectorHover={(d, i, e) => {
-                                            if (d) {
-                                                console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
-                                            } else {
-                                                console.log("Mouse leave - Index:", i, "Event:", e)
-                                            }
-                                        }
-                                        }
-                                    />
-                                </Panel.Body>
-                                    </Panel>
-                                </Col>
-                                <Col xs={6} md={4}>
-                                </Col>
-                                </Row>
                             <Form>
-                                <FormGroup>
-                                    <ControlLabel>{this.state.modalHeder}</ControlLabel>
-                                    <FormControl.Static>email@example.com</FormControl.Static>
-                                </FormGroup>
-                                <FormGroup controlId="formControlsSelect">
+                                <FormGroup controlId="formControlsSelect" >
                                     <ControlLabel>Current Status</ControlLabel>
-                                    <FormControl componentClass="select" placeholder="select">
-                                        <option value="select">select</option>
-                                        <option value="other">...</option>
+                                    <FormControl componentClass="select" placeholder="select" value={this.state.selectValue}>
+                                        <option value="select">Select Status</option>
+                                        <option value="25">Yes</option>
+                                        <option value="15">Resource Teams</option>
+                                        <option value="20">Action Needed</option>
+                                        <option value="5">None</option>
                                     </FormControl>
                                 </FormGroup>
                                 <FormGroup controlId="formControlsTextarea">
@@ -254,23 +245,23 @@ class About extends React.Component {
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={this.handleClose}>Close</Button>
+                            <Button onClick={this.handleClose}>Update</Button>
                         </Modal.Footer>
                     </Modal>
                   <Row className="show-grid" style={{ marginTop: '20px' }}>
                     <Col xs={6} md={4}>
-                            <Panel bsStyle="primary" onClick={() => this.handleShow('Caring Adults')}>
+                            <Panel bsStyle="primary" >
                             <Panel.Heading>
                                 <Panel.Title componentClass="h3">Caring Adults</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                {this.state.selectedStudent && this.state.selectedStudent.charts.caringAdults ? < PieChart
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts && this.state.selectedStudent.charts.caringAdults ? < PieChart
                                         data={this.state.selectedStudent.charts.caringAdults}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
                                             if (d) {
-                                                console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                                setTimeout(function () { this.handleShow(d.title, d.value.toString()); }.bind(this), 5000);
                                             } else {
                                                 console.log("Mouse leave - Index:", i, "Event:", e)
                                             }
@@ -281,18 +272,18 @@ class About extends React.Component {
                         </Panel>
                     </Col>
                     <Col xs={6} md={4}>
-                            <Panel bsStyle="success" onClick={() => this.handleShow('Work Ready Compentence')}>
+                            <Panel bsStyle="success">
                             <Panel.Heading>
                                 <Panel.Title componentClass="h3">Work Ready Compentence</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                {this.state.selectedStudent && this.state.selectedStudent.charts.workCompentencies ? < PieChart
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts && this.state.selectedStudent.charts.workCompentencies ? < PieChart
                                     data={this.state.selectedStudent.charts.workCompentencies}
                                     // If you need expand on hover (or touch) effect
                                     expandOnHover
                                     onSectorHover={(d, i, e) => {
                                         if (d) {
-                                            console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                            setTimeout(function () { this.handleShow(d.title, d.value.toString()); }.bind(this), 5000);
                                         } else {
                                             console.log("Mouse leave - Index:", i, "Event:", e)
                                         }
@@ -303,18 +294,18 @@ class About extends React.Component {
                         </Panel>
                     </Col>
                     <Col xs={6} md={4}>
-                            <Panel bsStyle="warning" onClick={() => this.handleShow('Positive Peer Groups')}>
+                            <Panel bsStyle="warning">
                             <Panel.Heading>
                                 <Panel.Title componentClass="h3">Positive Peer Groups</Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>
-                                {this.state.selectedStudent && this.state.selectedStudent.charts.peerGroups ? < PieChart
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts && this.state.selectedStudent.charts.peerGroups ? < PieChart
                                         data={this.state.selectedStudent.charts.peerGroups}
                                     // If you need expand on hover (or touch) effect
                                     expandOnHover
                                     onSectorHover={(d, i, e) => {
                                         if (d) {
-                                            console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                            setTimeout(function () { this.handleShow(d.title, d.value.toString()); }.bind(this), 5000);
                                         } else {
                                             console.log("Mouse leave - Index:", i, "Event:", e)
                                         }
@@ -327,18 +318,18 @@ class About extends React.Component {
                 </Row>
                     <Row className="show-grid">
                         <Col xs={6} md={4}>
-                            <Panel bsStyle="info" onClick={() => this.handleShow('Enriching Experiences')}>
+                            <Panel bsStyle="info">
                                 <Panel.Heading>
                                     <Panel.Title componentClass="h3">Enriching Experiences</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
-                                    {this.state.selectedStudent && this.state.selectedStudent.charts.enrichingExperiences ? < PieChart
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts && this.state.selectedStudent.charts.enrichingExperiences ? < PieChart
                                         data={this.state.selectedStudent.charts.enrichingExperiences}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
                                             if (d) {
-                                                console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                                setTimeout(function () { this.handleShow(d.title, d.value.toString()); }.bind(this), 5000);
                                             } else {
                                                 console.log("Mouse leave - Index:", i, "Event:", e)
                                             }
@@ -349,18 +340,18 @@ class About extends React.Component {
                             </Panel>
                         </Col>
                         <Col xs={6} md={4}>
-                            <Panel bsStyle="danger" onClick={() => this.handleShow('Self')}>
+                            <Panel bsStyle="danger" >
                                 <Panel.Heading>
                                     <Panel.Title componentClass="h3">Self</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
-                                    {this.state.selectedStudent && this.state.selectedStudent.charts.self ? < PieChart
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts && this.state.selectedStudent.charts.self ? < PieChart
                                         data={this.state.selectedStudent.charts.self}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
                                             if (d) {
-                                                console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                                setTimeout(function () { this.handleShow(d.title, d.value.toString()); }.bind(this), 5000);
                                             } else {
                                                 console.log("Mouse leave - Index:", i, "Event:", e)
                                             }
@@ -371,18 +362,18 @@ class About extends React.Component {
                             </Panel>
                         </Col>
                         <Col xs={6} md={4}>
-                            <Panel bsStyle="primary" onClick={() => this.handleShow('Purpose')}>
+                            <Panel bsStyle="primary" >
                                 <Panel.Heading>
                                     <Panel.Title componentClass="h3">Purpose</Panel.Title>
                                 </Panel.Heading>
                                 <Panel.Body>
-                                    {this.state.selectedStudent && this.state.selectedStudent.charts.purpose ? < PieChart
+                                    {this.state.selectedStudent && this.state.selectedStudent.charts && this.state.selectedStudent.charts.purpose ? < PieChart
                                         data={this.state.selectedStudent.charts.purpose}
                                         // If you need expand on hover (or touch) effect
                                         expandOnHover
                                         onSectorHover={(d, i, e) => {
                                             if (d) {
-                                                console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                                                setTimeout(function () { this.handleShow(d.title, d.value.toString()); }.bind(this), 5000);
                                             } else {
                                                 console.log("Mouse leave - Index:", i, "Event:", e)
                                             }
