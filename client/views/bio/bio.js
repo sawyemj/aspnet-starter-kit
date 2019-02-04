@@ -9,8 +9,32 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
+import AddStudentForm from '../../components/AddStudentForm'
 import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Button, Image, DropdownButton, MenuItem, PageHeader, Panel, Row } from 'react-bootstrap'
 import { Typeahead } from 'react-bootstrap-typeahead';
+import { Doughnut } from 'react-chartjs-2';
+
+const data = {
+    labels: [
+        'Red',
+        'Green',
+        'Yellow'
+    ],
+    datasets: [{
+        data: [300, 50, 100],
+        backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56'
+        ],
+        hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56'
+        ]
+    }]
+};
+
 
 class About extends React.Component {
     constructor(props, context) {
@@ -69,6 +93,8 @@ class About extends React.Component {
         };
     }
 
+    
+
   componentDidMount() {
     document.title = 'FInd a Student';
   }
@@ -106,109 +132,12 @@ class About extends React.Component {
                 </Col>
             </Row >
             <Row>
-
-            
             <Panel style={{ marginTop: '10px' }}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
-                   
                 </Panel.Heading>
                 <Panel.Body> 
-                        <Form horizontal style={{ marginTop: '30px' }}>
-                            <FormGroup controlId="dob">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    DOB
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="DOB" value={this.state.selectedStudent && this.state.selectedStudent.DOB ? this.state.selectedStudent.DOB : ''}/>
-                                </Col>
-                            </FormGroup>
-
-                            <FormGroup controlId="currentGrade">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Current Grade
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Current Grade" value={this.state.selectedStudent && this.state.selectedStudent.CurrentGrade ? this.state.selectedStudent.CurrentGrade : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="address">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Address
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Address" value={this.state.selectedStudent && this.state.selectedStudent.StreetAddress ? this.state.selectedStudent.StreetAddress : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="p1name">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Parent 1 Name
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Parent 1 Name" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentName ? this.state.selectedStudent.PrimaryParentName : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="p2name">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Parent 2 Name
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Parent 2 Name" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentName ? this.state.selectedStudent.SecondaryParentName : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="p1phone">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Parent 1 Phone
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Parent 1 Phone" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentPhone ? this.state.selectedStudent.PrimaryParentPhone : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="p1email">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Parent 1 Email
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Parent 1 Email" value={this.state.selectedStudent && this.state.selectedStudent.PrimaryParentEmail ? this.state.selectedStudent.PrimaryParentEmail : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="p2phone">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Parent 2 Phone
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Parent 2 Phone" value={this.state.selectedStudent && this.state.selectedStudent.SecondaryParentPhone ? this.state.selectedStudent.SecondaryParentPhone : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="p2email">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Parent 2 Email
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Parent 2 Email" value={this.state.selectedStudent && this.state.selectedStudent.SecondaryParentEmail ? this.state.selectedStudent.SecondaryParentEmail : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="studentphone">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Student Phone
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Student Phone" value={this.state.selectedStudent && this.state.selectedStudent.PhoneNumber ? this.state.selectedStudent.PhoneNumber : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup controlId="studentemail">
-                                <Col componentClass={ControlLabel} sm={2}>
-                                    Student Email
-    </Col>
-                                <Col sm={10}>
-                                    <FormControl placeholder="Student Email" value={ this.state.selectedStudent && this.state.selectedStudent.StudentEmail ? this.state.selectedStudent.StudentEmail : ''}/>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup>
-                                <Col smOffset={2} sm={10}>
-                                    <Button type="submit">Update</Button>
-                                </Col>
-                            </FormGroup>
-                        </Form>
+                        <Doughnut data={data} />
+                        <AddStudentForm isAdding='false'/>
                     </Panel.Body>
                 </Panel>
             </Row>

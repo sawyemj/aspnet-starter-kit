@@ -9,10 +9,11 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Button, PageHeader, Panel } from 'react-bootstrap'
+import { Table, Form, FormControl, FormGroup, Col, Checkbox, ControlLabel, Button, PageHeader, Panel, Glyphicon, Row } from 'react-bootstrap'
 import { Typeahead } from 'react-bootstrap-typeahead';
+import AddStudentModal from '../../components/AddStudentModal'
 
-const academics = {
+const academics = [{
     "AcademicID": 1001,
     "GPA": '3.4',
     "DisciplinaryAction": "false",
@@ -28,7 +29,7 @@ const academics = {
     "YearID": 8,
     "StudentPhoto": null,
     "SchoolID": null
-};
+}];
 
 const demographics = {
     "SchoolName": "Buena Vista Elementary",
@@ -41,8 +42,13 @@ class About extends React.Component {
     constructor(props, context) {
         super(props, context);
 
+        this.renderTable = this.renderTable.bind(this);
+        this.renderAddStudentModal = this.renderAddStudentModal.bind(this);
+        this.handleShowModal = this.handleShowModal.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+
         this.state = {
-            show: false,
+            showAddStudentModal: false,
             academics: {},
             demographics: {},
             students: [
@@ -170,7 +176,15 @@ class About extends React.Component {
     }
 
   componentDidMount() {
-    document.title = 'FInd a Student';
+    document.title = 'Academics';
+  }
+
+  handleShowModal() {
+      this.setState({showAddStudentModal: true})
+  }
+
+  handleModalClose() {
+      this.setState({ showAddStudentModal: false })
   }
 
   render() {
@@ -179,116 +193,151 @@ class About extends React.Component {
             <PageHeader style={{ color: '#7a1222' }}>
                 Academics
             </PageHeader>
-            <Typeahead
-                onChange={(selected) => {
-                    this.setState({ academics, demographics})
-                }}
-                labelKey={option => `${option.FName} ${option.LName}`}
-                options={this.state.students}
-                placeholder="Find Student"
-                style={{marginTop:'10px'}}
-            />
+            <Row>
+              <Col xs={12} md={8}>
+                  {this.renderTypeahead() }
+              </Col>
+              <Col xs={6} md={4}>
+                  <Button onClick={ this.handleShowModal }>
+                    <Glyphicon glyph="plus" />
+                  </Button>
+              </Col>
+            </Row>
+            <Row>
             <Panel style={{marginTop: '10px'}}>
                 <Panel.Heading style={{ backgroundColor: '#f0b92b', color: '#7a1222' }}>
                 </Panel.Heading>
-                <Panel.Body><Form horizontal style={{ marginTop: '10px' }}>
-                    <FormGroup controlId="schoolName">
-                        <Col componentClass={ControlLabel} sm={2}>
-                            School Name
-    </Col>
-                        <Col sm={10}>
-                            <FormControl placeholder="School Name" value={this.state.demographics.SchoolName || ''}/>
-                        </Col>
-                    </FormGroup>
-
-                    <FormGroup controlId="counselor">
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Counselor
-    </Col>
-                        <Col sm={10}>
-                            <FormControl placeholder="Counselor" value={this.state.demographics.Counselor || ''}/>
-                        </Col>
-                    </FormGroup>
-                    <FormGroup controlId="graduationDate">
-                        <Col componentClass={ControlLabel} sm={2}>
-                            Expected Graduation Date
-    </Col>
-                        <Col sm={10}>
-                            <FormControl placeholder="Graduation Date" value={this.state.demographics.ExpectedGraduationDate || ''}/>
-                        </Col>
-                    </FormGroup>
-                    <FormGroup controlId="cluster">
-                        <Col componentClass={ControlLabel} sm={2}>
-                             Academy / Career Cluster
-    </Col>
-                        <Col sm={10}>
-                            <FormControl placeholder="Cluster" value={this.state.demographics.ExpectedGraduationDate || ''}/>
-                        </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <Col smOffset={2} sm={10}>
-                            <Button type="submit">Update</Button>
-                        </Col>
-                    </FormGroup>
-                </Form>
-                    <Table responsive style={{ marginTop: '10px' }}>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Q1</th>
-                                <th>Q2</th>
-                                <th>Q3</th>
-                                <th>Q4</th>
-                                <th>Comments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>GPA</td>
-                                <td>{this.state.academics.GPA || ''}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
-                            </tr>
-                            <tr>
-                                <td>Disp</td>
-                                <td>{this.state.academics.DisciplinaryAction || ''}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Abscence</td>
-                                <td>{this.state.academics.UnexcusedAbsences || ''}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Fails</td>
-                                <td>{this.state.academics.FailedClasses || '' }</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </Table>
+                <Panel.Body>
+                    { this.renderAddStudentModal()}
+                    { this.renderForm() }
+                    { this.renderTable() }
                    </Panel.Body>
             </Panel>
-           
+           </Row>
       </Layout>
     );
   }
 
+  renderForm() {
+      return (
+          <Form horizontal style={{ marginTop: '10px' }}>
+              <FormGroup controlId="schoolName">
+                  <Col componentClass={ControlLabel} sm={2}>
+                      School Name
+                  </Col>
+                  <Col sm={10}>
+                      <FormControl placeholder="School Name" value={this.state.demographics.SchoolName || ''} />
+                  </Col>
+              </FormGroup>
+
+              <FormGroup controlId="counselor">
+                  <Col componentClass={ControlLabel} sm={2}>
+                      Counselor
+                  </Col>
+                  <Col sm={10}>
+                      <FormControl placeholder="Counselor" value={this.state.demographics.Counselor || ''} />
+                  </Col>
+              </FormGroup>
+              <FormGroup controlId="graduationDate">
+                  <Col componentClass={ControlLabel} sm={2}>
+                      Expected Graduation Date
+                  </Col>
+                  <Col sm={10}>
+                      <FormControl placeholder="Graduation Date" value={this.state.demographics.ExpectedGraduationDate || ''} />
+                  </Col>
+              </FormGroup>
+              <FormGroup controlId="cluster">
+                  <Col componentClass={ControlLabel} sm={2}>
+                      Academy / Career Cluster
+                  </Col>
+                  <Col sm={10}>
+                      <FormControl placeholder="Cluster" value={this.state.demographics.ExpectedGraduationDate || ''} />
+                  </Col>
+              </FormGroup>
+              <FormGroup>
+                  <Col smOffset={2} sm={10}>
+                      <Button type="submit">Update</Button>
+                  </Col>
+              </FormGroup>
+          </Form>
+      )
+  }
+
+  renderAddStudentModal() {
+      return (
+          <AddStudentModal showModal={ this.state.showAddStudentModal } handleHide={ this.handleModalClose } />
+      );
+  }
+
+  renderTable() {
+      return (
+          <Table responsive style={{ marginTop: '10px' }}>
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Q1</th>
+                      <th>Q2</th>
+                      <th>Q3</th>
+                      <th>Q4</th>
+                      <th>Comments</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>GPA</td>
+                      <td>{this.state.academics.GPA || ''}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                  </tr>
+                  <tr>
+                      <td>Disp</td>
+                      <td>{this.state.academics.DisciplinaryAction || ''}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>Abscence</td>
+                      <td>{this.state.academics.UnexcusedAbsences || ''}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td>Fails</td>
+                      <td>{this.state.academics.FailedClasses || ''}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+              </tbody>
+          </Table> 
+      )
+  }//renderTable
+
+  renderTypeahead() {
+      return (
+          <Typeahead
+              onChange={(selected) => {
+                  this.setState({ academics, demographics })
+              }}
+              labelKey={option => `${option.FName} ${option.LName}`}
+              options={this.state.students}
+              placeholder="Find Student"
+              style={{ marginTop: '10px' }}
+          />
+      )
+  }
 }
 
 export default About;

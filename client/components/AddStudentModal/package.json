@@ -1,0 +1,6 @@
+{
+  "name": "add-student-modal",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./add-student-modal.js"
+}

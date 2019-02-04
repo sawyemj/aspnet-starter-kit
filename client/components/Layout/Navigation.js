@@ -27,6 +27,8 @@ class Navigation extends React.Component {
         <Link className="mdl-navigation__link" to="/academics">Academics</Link>
         <Link className="mdl-navigation__link" to="/coc-maps">COC Maps</Link>
         <Link className="mdl-navigation__link" to="/bio">Bio</Link>
+        <Link className="mdl-navigation__link" to="/users">Users</Link>
+
       </nav>
     );
   }

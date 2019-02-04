@@ -33,6 +33,10 @@
     "view": "./views/coc-maps"
   },
   {
+    "path": "/users",
+    "view": "./views/users"
+  },
+  {
     "path": "/tasks/:status(pending|completed)?",
     "view": "./views/home"
   }

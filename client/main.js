@@ -16,7 +16,7 @@ import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 
-import store from './store';
+import  store from './store';
 import router from './router';
 import history from './history';
 
@@ -25,6 +25,7 @@ let routes = require('./routes.json'); // Loaded with utils/routes-loader.js
 const container = document.getElementById('container');
 
 function renderComponent(component) {
+    console.log("Store", store);
   ReactDOM.render(<Provider store={store}>{component}</Provider>, container);
 }
 

@@ -1,0 +1,6 @@
+{
+  "name": "AddStudentForm",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./AddStudentForm.js"
+}
